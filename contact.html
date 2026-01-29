@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RR Cloud</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="index.html">
+                <span class="bg-primary text-white p-1 rounded me-2 fs-5">RR</span> RR Cloud
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="clients.html">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="careers.html" class="btn btn-primary px-4 rounded-pill">Join Our Team</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header d-flex flex-column justify-content-center align-items-center text-center text-white">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
+            <p class="lead opacity-75">Get in touch with our team to discuss your needs.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-6 bg-white">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Contact Form -->
+                <div class="col-lg-6">
+                    <div class="p-4 border rounded-3 h-100 bg-white">
+                        <h4 class="fw-bold mb-4">Send us a message</h4>
+                        <form>
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label fw-bold small">Name *</label>
+                                <input type="text" class="form-control bg-light border-0 p-3" id="contactName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label fw-bold small">Email *</label>
+                                <input type="email" class="form-control bg-light border-0 p-3" id="contactEmail">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactCompany" class="form-label fw-bold small">Company</label>
+                                <input type="text" class="form-control bg-light border-0 p-3" id="contactCompany">
+                            </div>
+                            <div class="mb-4">
+                                <label for="contactMessage" class="form-label fw-bold small">Message *</label>
+                                <textarea class="form-control bg-light border-0 p-3" id="contactMessage"
+                                    rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary px-4 py-2 rounded-1 fw-bold w-100">Send Message
+                                <i class="fas fa-paper-plane ms-2 small"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Info and Map -->
+                <div class="col-lg-6">
+                    <div class="d-flex flex-column h-100">
+                        <!-- Map Placeholder -->
+                        <div class="map-placeholder rounded-3 d-flex flex-column align-items-center justify-content-center text-muted mb-4 p-5"
+                            style="min-height: 300px; background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 10px, #f1f5f9 10px, #f1f5f9 20px);">
+                            <i class="fas fa-map-marker-alt fa-3x mb-3 text-primary opacity-50"></i>
+                            <h5 class="fw-bold text-dark">United States</h5>
+                            <p class="small mb-0 text-muted">Headquarters</p>
+                        </div>
+
+                        <!-- Get in Touch -->
+                        <div class="p-4 border rounded-3 bg-white h-100">
+                            <h5 class="fw-bold mb-4">Get in Touch</h5>
+                            <div class="d-flex mb-3">
+                                <div class="icon-box bg-soft-primary text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                    style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="small text-muted mb-0">Email</p>
+                                    <p class="fw-bold mb-0">HR@rrcloudllc.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="icon-box bg-soft-primary text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                    style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="small text-muted mb-0">Phone</p>
+                                    <p class="fw-bold mb-0">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="icon-box bg-soft-primary text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                    style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="small text-muted mb-0">Location</p>
+                                    <p class="fw-bold mb-0">United States</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-5 pb-4 border-top">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand fw-bold text-primary d-flex align-items-center mb-3" href="#">
+                        <span class="bg-primary text-white p-1 rounded me-2 fs-6">RR</span> RR Cloud
+                    </a>
+                    <p class="text-muted small">Building careers and delivering intelligent IT solutions. Your trusted
+                        partner for technology consulting and staffing excellence.</p>
+                    <div class="contact-info small text-muted mt-3">
+                        <p class="mb-1"><i class="far fa-envelope me-2"></i> info@rrcloud.com</p>
+                        <p class="mb-1"><i class="fas fa-phone-alt me-2"></i> +1 (555) 123-4567</p>
+                        <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> United States</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-decoration-none text-muted">Services</a>
+                        </li>
+                        <li class="mb-2"><a href="careers.html" class="text-decoration-none text-muted">Careers</a></li>
+                        <li class="mb-2"><a href="clients.html" class="text-decoration-none text-muted">Clients</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-decoration-none text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">IT Consulting</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Staffing Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Career Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Client Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">EEO Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-muted mb-0">&copy; 2026 RR Cloud LLC. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-muted mb-0">An Equal Opportunity Employer</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

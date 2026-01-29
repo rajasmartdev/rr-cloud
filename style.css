@@ -1,0 +1,181 @@
+/* Google Font: Inter */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #334e6a;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Primary Colors */
+:root {
+    --primary-color: #0d6efd;
+    /* Bootstrap default blue, aiming for #0056b3 variance */
+    --primary-dark: #004494;
+    --secondary-color: #002a80;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.navbar-brand span {
+    font-weight: 800;
+}
+
+/* Hero Section */
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(0, 68, 204, 0.9) 0%, rgba(0, 42, 128, 0.9) 100%), url('images/hero_main_1769239441020.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 85vh;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glassmorphism Card in Hero */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    height: 400px;
+    width: 100%;
+}
+
+/* Utilities */
+.py-6 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.text-primary {
+    color: #0061f2 !important;
+}
+
+.bg-soft-blue {
+    background-color: #f0f6ff;
+}
+
+.bg-soft-primary {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+/* Feature Cards & Hover Effects */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent;
+}
+
+/* Service Cards */
+.service-card {
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: #e2e8f0;
+    transform: translateY(-3px);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #0061f2;
+    border-color: #0061f2;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #004ebd;
+    border-color: #004ebd;
+    transform: translateY(-2px);
+}
+
+.btn-light {
+    color: #0044cc;
+}
+
+.btn-light:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+/* Footer Link Hover */
+footer a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, rgba(0, 68, 204, 0.9) 0%, rgba(0, 42, 128, 0.9) 100%);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    padding-top: 80px;
+    position: relative;
+}
+
+/* Team Placeholder */
+.team-placeholder {
+    transition: background-color 0.3s;
+}
+
+.team-placeholder:hover {
+    background-color: #e2e8f0 !important;
+}
+
+.stats-card {
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Form Styles */
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary-color);
+    background-color: #fff !important;
+}
+
+/* Process Steps */
+.process-step {
+    z-index: 2;
+}
