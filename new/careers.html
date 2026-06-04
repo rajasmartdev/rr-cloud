@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers — RR Cloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #080c14;
+      --ink2: #0f1623;
+      --ink3: #161f30;
+      --surface: #1a2540;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --gold: #f59e0b;
+      --white: #f8faff;
+      --muted: rgba(248,250,255,0.45);
+      --border: rgba(248,250,255,0.08);
+      --border2: rgba(59,130,246,0.3);
+      --r: 12px;
+      --r2: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRID LINES ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── GLOW ORBS ─── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.12); top: -200px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(245,158,11,0.06); bottom: 20%; left: -100px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-badge::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      background: var(--border);
+    }
+
+    .btn-nav {
+      background: var(--accent);
+      color: #fff !important;
+      border-radius: 8px !important;
+      font-weight: 500 !important;
+      padding: 0.5rem 1.2rem !important;
+      transition: all 0.2s !important;
+    }
+
+    .btn-nav:hover {
+      background: var(--accent2) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.35) !important;
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section { position: relative; z-index: 1; }
+
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 2rem;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+
+    .section-badge::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--accent2);
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 160px 2rem 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent2) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .page-hero .btn-group { justify-content: center; }
+
+    .btn-primary-custom {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-custom::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(59,130,246,0.4);
+    }
+    .btn-primary-custom:hover::before { opacity: 1; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(248,250,255,0.3);
+      background: var(--border);
+    }
+
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─── WHY CHOOSE US ─── */
+    .why-section { background: var(--ink2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .domain-card {
+      background: var(--ink2);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .domain-card:hover { background: var(--ink3); }
+
+    .domain-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .domain-card:hover::after { opacity: 1; }
+
+    .domain-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      font-size: 1.15rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .domain-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .domain-desc { font-size: 0.85rem; color: var(--muted); font-weight: 300; margin-bottom: 1rem; line-height: 1.7; }
+
+    .domain-count {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent2);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .domain-count::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      display: inline-block;
+    }
+
+    /* ─── SERVICES SECTION ─── */
+    .services-section { background: var(--ink); }
+
+    .why-careers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .why-careers-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2.5rem;
+      background: var(--ink2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .why-careers-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 2rem; right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .why-careers-card:hover {
+      border-color: rgba(59,130,246,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+
+    .why-careers-card:hover::before { opacity: 1; }
+
+    .wc-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(59,130,246,0.08);
+      line-height: 1;
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      letter-spacing: -0.05em;
+      transition: color 0.3s;
+    }
+
+    .why-careers-card:hover .wc-num { color: rgba(59,130,246,0.15); }
+
+    .wc-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
+    }
+
+    .wc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .wc-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    /* ─── FORM SECTION ─── */
+    .form-section { background: var(--ink2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .text-center { text-align: center; }
+
+    .form-wrap {
+      max-width: 760px;
+      margin: 3.5rem auto 0;
+    }
+
+    .form-card {
+      background: var(--ink3);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 3rem;
+    }
+
+    /* STEP BAR */
+    .step-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .step-connector {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      transition: background 0.4s;
+    }
+
+    .step-connector.done { background: var(--accent); }
+
+    .step-node {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--ink2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-node.active {
+      border-color: var(--accent);
+      background: rgba(59,130,246,0.15);
+      color: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
+    }
+
+    .step-node.done {
+      border-color: #10b981;
+      background: rgba(16,185,129,0.15);
+      color: #10b981;
+    }
+
+    .step-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .step-lbl {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 400;
+      text-align: center;
+      flex: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .step-lbl.active { color: var(--accent2); font-weight: 500; }
+
+    /* FORM FIELDS */
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .form-section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.01em;
+    }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .field-row.full { grid-template-columns: 1fr; }
+    .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+    .field-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(248,250,255,0.55);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select, textarea {
+      background: var(--ink2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(248,250,255,0.2); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    }
+
+    input[readonly] { opacity: 0.45; cursor: default; }
+
+    select option { background: var(--ink3); }
+
+    .sub-section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 1.5rem 0 1rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .sub-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .form-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; gap: 1rem; }
+    .form-actions.end { justify-content: flex-end; }
+
+    .btn-form-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-form-primary:hover { background: var(--accent2); box-shadow: 0 8px 25px rgba(59,130,246,0.35); transform: translateY(-1px); }
+
+    .btn-form-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-form-ghost:hover { border-color: rgba(248,250,255,0.2); color: var(--white); }
+
+    .btn-form-success {
+      background: #059669;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-form-success:hover { background: #047857; box-shadow: 0 8px 25px rgba(16,185,129,0.3); transform: translateY(-1px); }
+
+    .review-box {
+      background: var(--ink2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .review-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 0.85rem; }
+    .review-row:last-child { margin-bottom: 0; }
+    .review-key { color: var(--muted); font-weight: 300; min-width: 60px; }
+    .review-val { color: var(--white); font-weight: 400; }
+
+    .consent-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.5rem; }
+    .consent-row input[type="checkbox"] {
+      width: 16px; height: 16px;
+      flex-shrink: 0; margin-top: 3px;
+      accent-color: var(--accent);
+    }
+    .consent-row label {
+      font-size: 0.82rem; color: var(--muted);
+      text-transform: none; letter-spacing: 0; font-weight: 300; line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid var(--border);
+      padding: 80px 2rem 40px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    .contact-line {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .footer-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+      transition: all 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .domain-grid { grid-template-columns: 1fr 1fr; }
+      .why-careers-grid { grid-template-columns: 1fr 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .field-row.three { grid-template-columns: 1fr 1fr; }
+      .form-card { padding: 2rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .domain-grid { grid-template-columns: 1fr; }
+      .why-careers-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .section-wrap { padding: 60px 1rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .form-card { padding: 1.5rem; }
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- GLOW ORBS -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="index.html">
+      <div class="logo-badge">RR</div>
+      RR Cloud
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="careers.html" style="color:var(--white);">Careers</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="careers.html" class="btn-nav">Join Our Team</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Open Positions
+      </div>
+      <h1>Build Your Career<br>at <span class="highlight">RR Cloud</span></h1>
+      <p class="hero-lead">Join a team of driven professionals delivering intelligent IT solutions and transforming careers across the US. Your next chapter starts here.</p>
+      <div class="btn-group">
+        <a href="#open-positions" class="btn-primary-custom">
+          <i class="fas fa-briefcase"></i> View Open Positions
+        </a>
+        <a href="#apply" class="btn-ghost">
+          Apply Now <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN POSITIONS -->
+  <section class="why-section" id="open-positions">
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-badge">Opportunities</div>
+        <h2>Career Opportunities</h2>
+        <p class="section-sub">Explore open positions across key technology domains where we're actively hiring right now.</p>
+      </div>
+      <div class="domain-grid fade-up">
+        <div class="domain-card">
+          <div class="domain-icon"><i class="fas fa-code"></i></div>
+          <div class="domain-title">Software Engineering</div>
+          <div class="domain-desc">Build innovative solutions using modern technologies and engineering best practices at scale.</div>
+          <div class="domain-count">12 open positions</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon"><i class="fas fa-database"></i></div>
+          <div class="domain-title">Data & AI</div>
+          <div class="domain-desc">Transform raw data into actionable insights and develop intelligent, production-grade applications.</div>
+          <div class="domain-count">8 open positions</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon"><i class="fas fa-cloud"></i></div>
+          <div class="domain-title">Cloud & DevOps</div>
+          <div class="domain-desc">Design and manage scalable cloud infrastructure and automated CI/CD delivery pipelines.</div>
+          <div class="domain-count">6 open positions</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="domain-title">IT Consulting</div>
+          <div class="domain-desc">Advise clients on technology strategy and guide digital transformation roadmaps that stick.</div>
+          <div class="domain-count">5 open positions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY RR CLOUD -->
+  <section class="services-section">
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-badge">Why Join Us</div>
+        <h2>Why Work at RR Cloud</h2>
+        <p class="section-sub">We invest in your long-term growth — not just your next placement. Four reasons professionals choose us.</p>
+      </div>
+      <div class="why-careers-grid fade-up">
+        <div class="why-careers-card">
+          <div class="wc-num">01</div>
+          <div class="wc-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="wc-title">Career Growth</div>
+          <div class="wc-text">Mentorship, training, and clear advancement pathways built around your professional goals.</div>
+        </div>
+        <div class="why-careers-card">
+          <div class="wc-num">02</div>
+          <div class="wc-icon"><i class="fas fa-building"></i></div>
+          <div class="wc-title">Top-Tier Clients</div>
+          <div class="wc-text">Engage with Fortune 500 companies across healthcare, finance, and the broader technology sector.</div>
+        </div>
+        <div class="why-careers-card">
+          <div class="wc-num">03</div>
+          <div class="wc-icon"><i class="fas fa-dollar-sign"></i></div>
+          <div class="wc-title">Competitive Pay</div>
+          <div class="wc-text">Market-leading compensation packages with performance-based incentives and regular reviews.</div>
+        </div>
+        <div class="why-careers-card">
+          <div class="wc-num">04</div>
+          <div class="wc-icon"><i class="fas fa-users"></i></div>
+          <div class="wc-title">Supportive Culture</div>
+          <div class="wc-text">A collaborative environment where your ideas are genuinely heard and your impact is visible.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section class="form-section" id="apply">
+    <div class="section-wrap">
+      <div class="text-center fade-up" style="text-align:center;">
+        <div class="section-badge" style="justify-content:center;">Apply Now</div>
+        <h2>Submit Your Application</h2>
+        <p class="section-sub" style="margin:0 auto;">Take the next step — our team will reach out within 2 business days.</p>
+      </div>
+      <div class="form-wrap fade-up">
+        <div class="form-card">
+
+          <!-- STEP BAR -->
+          <div class="step-bar" id="stepBar">
+            <div class="step-node active" id="sn1">1</div>
+            <div class="step-connector" id="sc12"></div>
+            <div class="step-node" id="sn2">2</div>
+            <div class="step-connector" id="sc23"></div>
+            <div class="step-node" id="sn3">3</div>
+            <div class="step-connector" id="sc34"></div>
+            <div class="step-node" id="sn4">4</div>
+          </div>
+          <div class="step-labels">
+            <span class="step-lbl active" id="sl1">Personal</span>
+            <span class="step-lbl" id="sl2">Address</span>
+            <span class="step-lbl" id="sl3">Education</span>
+            <span class="step-lbl" id="sl4">Review</span>
+          </div>
+
+          <form id="appForm" novalidate>
+
+            <!-- STEP 1 -->
+            <div class="form-step active" id="step1">
+              <div class="form-section-title">Personal & Account Details</div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label>Full Name *</label>
+                  <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+                <div class="field-group">
+                  <label>Date of Birth *</label>
+                  <input type="date" id="dob" required>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label>Phone *</label>
+                  <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+                </div>
+                <div class="field-group">
+                  <label>Position Applied For</label>
+                  <input type="text" value="Sr. Data Analyst" readonly>
+                </div>
+              </div>
+              <div class="field-group">
+                <label>Email *</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+              </div>
+              <div class="field-group">
+                <label>Password *</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+              </div>
+              <div class="field-group">
+                <label>Visa Status *</label>
+                <select id="visa" required>
+                  <option value="" disabled selected>Select Visa Status</option>
+                  <option>US Citizen</option>
+                  <option>Green Card</option>
+                  <option>H1B</option>
+                  <option>OPT/CPT</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-actions end">
+                <button type="button" class="btn-form-primary" onclick="goStep(2)">Next <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="form-step" id="step2">
+              <div class="form-section-title">Address & Legal Information</div>
+              <div class="field-group">
+                <label>Street Address *</label>
+                <input type="text" id="address" placeholder="123 Main Street" required>
+              </div>
+              <div class="field-row three">
+                <div class="field-group">
+                  <label>City *</label>
+                  <input type="text" id="city" required>
+                </div>
+                <div class="field-group">
+                  <label>State *</label>
+                  <input type="text" id="state" required>
+                </div>
+                <div class="field-group">
+                  <label>Zip Code *</label>
+                  <input type="text" id="zip" required>
+                </div>
+              </div>
+              <div class="field-group">
+                <label>SSN — Last 5 Digits *</label>
+                <input type="text" id="ssn" maxlength="5" placeholder="XXXXX" required>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn-form-ghost" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+                <button type="button" class="btn-form-primary" onclick="goStep(3)">Next <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="form-step" id="step3">
+              <div class="form-section-title">Education Details</div>
+              <div class="sub-section-label">Bachelor's Degree</div>
+              <div class="field-group">
+                <label>University Name</label>
+                <input type="text" id="bachUni" placeholder="e.g. University of Texas">
+              </div>
+              <div class="field-row three">
+                <div class="field-group">
+                  <label>Start Year</label>
+                  <input type="number" id="bachStart" placeholder="YYYY">
+                </div>
+                <div class="field-group">
+                  <label>End Year</label>
+                  <input type="number" id="bachEnd" placeholder="YYYY">
+                </div>
+                <div class="field-group">
+                  <label>GPA</label>
+                  <input type="text" id="bachGpa" placeholder="3.8">
+                </div>
+              </div>
+              <div class="sub-section-label">Master's Degree <span style="font-size:0.7rem;color:rgba(248,250,255,0.25);font-weight:300;text-transform:none;letter-spacing:0;">(optional)</span></div>
+              <div class="field-group">
+                <label>University Name</label>
+                <input type="text" id="mastUni">
+              </div>
+              <div class="field-row three">
+                <div class="field-group">
+                  <label>Start Year</label>
+                  <input type="number" id="mastStart" placeholder="YYYY">
+                </div>
+                <div class="field-group">
+                  <label>End Year</label>
+                  <input type="number" id="mastEnd" placeholder="YYYY">
+                </div>
+                <div class="field-group">
+                  <label>GPA</label>
+                  <input type="text" id="mastGpa">
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn-form-ghost" onclick="goStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+                <button type="button" class="btn-form-primary" onclick="goStep(4)">Next <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="form-step" id="step4">
+              <div class="form-section-title">Review & Submit</div>
+              <p style="font-size:0.85rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;">Applying for <strong style="color:var(--accent2);font-weight:500;">Sr. Data Analyst</strong>. Please confirm your details below before submitting.</p>
+              <div class="review-box">
+                <div class="review-row"><span class="review-key">Name</span><span class="review-val" id="rName">—</span></div>
+                <div class="review-row"><span class="review-key">Email</span><span class="review-val" id="rEmail">—</span></div>
+                <div class="review-row" style="margin-bottom:0"><span class="review-key">Phone</span><span class="review-val" id="rPhone">—</span></div>
+              </div>
+              <div class="consent-row">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">I confirm that all information provided is accurate and I agree to the terms and conditions.</label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn-form-ghost" onclick="goStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
+                <button type="submit" class="btn-form-success" id="submitBtn">Submit Application <i class="fas fa-check"></i></button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a class="logo" href="index.html">
+            <div class="logo-badge">RR</div>
+            RR Cloud
+          </a>
+          <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner for technology consulting and staffing excellence.</p>
+          <div class="contact-line"><i class="far fa-envelope"></i> info@rrcloud.com</div>
+          <div class="contact-line"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</div>
+          <div class="contact-line"><i class="fas fa-map-marker-alt"></i> United States</div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="services.html">IT Consulting</a></li>
+            <li><a href="services.html">Staffing Solutions</a></li>
+            <li><a href="careers.html">Career Services</a></li>
+            <li><a href="clients.html">Client Solutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Legal</div>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">EEO Statement</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 RR Cloud LLC. All rights reserved.</span>
+        <span>An Equal Opportunity Employer</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── SCROLL ANIMATIONS ──
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // ── MULTI-STEP FORM ──
+    let cur = 1;
+    function goStep(n) {
+      document.getElementById('step' + cur).classList.remove('active');
+      document.getElementById('step' + n).classList.add('active');
+
+      for (let i = 1; i <= 4; i++) {
+        const node = document.getElementById('sn' + i);
+        const lbl = document.getElementById('sl' + i);
+        node.classList.remove('active', 'done');
+        lbl.classList.remove('active');
+        if (i < n) { node.classList.add('done'); node.innerHTML = '<i class="fas fa-check" style="font-size:10px"></i>'; }
+        else if (i === n) { node.classList.add('active'); node.innerHTML = i; lbl.classList.add('active'); }
+        else { node.innerHTML = i; }
+        if (i < 4) {
+          const conn = document.getElementById('sc' + i + (i + 1));
+          if (conn) conn.classList.toggle('done', i < n);
+        }
+      }
+
+      if (n === 4) {
+        document.getElementById('rName').textContent = document.getElementById('fullName').value || '—';
+        document.getElementById('rEmail').textContent = document.getElementById('email').value || '—';
+        document.getElementById('rPhone').textContent = document.getElementById('phone').value || '—';
+      }
+      cur = n;
+    }
+
+    document.getElementById('appForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Application Submitted!';
+        btn.style.background = '#047857';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

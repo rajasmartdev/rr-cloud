@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Employers — RR Cloud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #080c14;
+      --ink2: #0f1623;
+      --ink3: #161f30;
+      --surface: #1a2540;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --gold: #f59e0b;
+      --white: #f8faff;
+      --muted: rgba(248,250,255,0.45);
+      --border: rgba(248,250,255,0.08);
+      --border2: rgba(59,130,246,0.3);
+      --r: 12px;
+      --r2: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRID LINES ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── GLOW ORBS ─── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.12); top: -200px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(245,158,11,0.06); bottom: 20%; left: -100px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-badge::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      background: var(--border);
+    }
+
+    .btn-nav {
+      background: var(--accent);
+      color: #fff !important;
+      border-radius: 8px !important;
+      font-weight: 500 !important;
+      padding: 0.5rem 1.2rem !important;
+      transition: all 0.2s !important;
+    }
+
+    .btn-nav:hover {
+      background: var(--accent2) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.35) !important;
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section { position: relative; z-index: 1; }
+
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 2rem;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+
+    .section-badge::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--accent2);
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 160px 2rem 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent2) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .page-hero .btn-group { justify-content: center; }
+
+    .btn-primary-custom {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-custom::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(59,130,246,0.4);
+    }
+    .btn-primary-custom:hover::before { opacity: 1; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(248,250,255,0.3);
+      background: var(--border);
+    }
+
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--ink2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .stat-block {
+      background: var(--ink2);
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .stat-big {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent2), var(--white));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .stat-lbl-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+
+    /* ─── INDUSTRIES ─── */
+    .services-section { background: var(--ink); }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .industry-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2rem;
+      background: var(--ink2);
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .industry-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 2rem; right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .industry-card:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+    .industry-card:hover::before { opacity: 1; }
+
+    .industry-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      font-size: 1.1rem;
+      margin: 0 auto 1rem;
+    }
+
+    .industry-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .industry-desc { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    /* ─── ENGAGEMENT MODELS ─── */
+    .why-section { background: var(--ink2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .engagement-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2.5rem;
+      background: var(--ink2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .engagement-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 2rem; right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .engagement-card:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+    .engagement-card:hover::before { opacity: 1; }
+
+    .engagement-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      border: 1px solid var(--border2);
+      background: rgba(59,130,246,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .engagement-card:hover .engagement-icon { background: rgba(59,130,246,0.15); box-shadow: 0 0 0 4px rgba(59,130,246,0.08); }
+
+    .engagement-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .engagement-desc { font-size: 0.9rem; color: var(--muted); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.75; }
+
+    .check-list { list-style: none; padding: 0; }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: rgba(248,250,255,0.65);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 300;
+    }
+
+    .check-list li:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 18px; height: 18px;
+      background: rgba(59,130,246,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      font-size: 0.55rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── PROCESS STEPS ─── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .process-step {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 2.5rem;
+      background: var(--ink2);
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .process-step:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+
+    .process-num {
+      width: 56px; height: 56px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 25px rgba(59,130,246,0.3);
+    }
+
+    .process-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .process-desc { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+    .process-arrow {
+      position: absolute;
+      right: -2.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-size: 1.1rem;
+      z-index: 2;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section { background: var(--ink); padding: 100px 2rem; position: relative; z-index: 1; }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cta-card {
+      border-radius: var(--r2);
+      position: relative;
+      overflow: hidden;
+      padding: 3rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .cta-card:hover { transform: translateY(-4px); }
+
+    .cta-grid-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+    }
+
+    .cta-dark {
+      background: var(--ink2);
+    }
+
+    .cta-blue {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(96,165,250,0.05) 100%);
+      border-color: rgba(59,130,246,0.2);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-icon {
+      width: 56px; height: 56px;
+      background: rgba(59,130,246,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent2);
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
+    }
+
+    .btn-cta-dark {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-cta-dark:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 8px 25px rgba(59,130,246,0.35); }
+
+    .btn-cta-light {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(248,250,255,0.2);
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .btn-cta-light:hover { border-color: rgba(248,250,255,0.3); background: rgba(248,250,255,0.05); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid var(--border);
+      padding: 80px 2rem 40px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    .contact-line {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .footer-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 300;
+      transition: all 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .industry-grid { grid-template-columns: repeat(3, 1fr); }
+      .engagement-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .industry-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .section-wrap { padding: 60px 1rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <nav>
+    <a class="logo" href="index.html">
+      <div class="logo-badge">RR</div>
+      RR Cloud
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="clients.html" style="color:var(--white);">Clients</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="careers.html" class="btn-nav">Join Our Team</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> For Employers</div>
+      <h1>Partner with RR Cloud<br>for <span class="highlight">Exceptional Talent</span></h1>
+      <p class="hero-lead">We connect you with rigorously vetted IT professionals and deliver strategic solutions that drive measurable, lasting business impact.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn-primary-custom"><i class="fas fa-handshake"></i> Start a Partnership</a>
+        <a href="services.html" class="btn-ghost">Explore Services <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stats-inner fade-up">
+      <div class="stat-block">
+        <div class="stat-big">2,400+</div>
+        <div class="stat-lbl-text">Enterprise Placements</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-big">98%</div>
+        <div class="stat-lbl-text">Client Retention Rate</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-big">150+</div>
+        <div class="stat-lbl-text">Active Partners</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-big">12+</div>
+        <div class="stat-lbl-text">Years Active</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section class="services-section">
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-badge">Sectors</div>
+        <h2>Industries We Serve</h2>
+        <p class="section-sub">Delivering specialized talent and consulting across diverse sectors with precision and deep domain expertise.</p>
+      </div>
+      <div class="industry-grid fade-up">
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fas fa-desktop"></i></div>
+          <div class="industry-name">IT & Software</div>
+          <div class="industry-desc">Technology and software development companies.</div>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fas fa-heartbeat"></i></div>
+          <div class="industry-name">Healthcare</div>
+          <div class="industry-desc">Hospitals, clinics, and health tech orgs.</div>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fas fa-dollar-sign"></i></div>
+          <div class="industry-name">Finance</div>
+          <div class="industry-desc">Banks, fintech, and financial services.</div>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fas fa-truck-moving"></i></div>
+          <div class="industry-name">Logistics</div>
+          <div class="industry-desc">Supply chain and transportation companies.</div>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon"><i class="fas fa-building"></i></div>
+          <div class="industry-name">Enterprise</div>
+          <div class="industry-desc">Large-scale enterprise organizations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT MODELS -->
+  <section class="why-section">
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-badge">How We Work</div>
+        <h2>Engagement Models</h2>
+        <p class="section-sub">Flexible, tailored solutions designed precisely around your business needs and hiring timeline.</p>
+      </div>
+      <div class="engagement-grid fade-up">
+        <div class="engagement-card">
+          <div class="engagement-icon"><i class="fas fa-file-contract"></i></div>
+          <div class="engagement-title">Contract (C2C / W2)</div>
+          <div class="engagement-desc">Flexible workforce arrangements for project-based and temporary staffing needs.</div>
+          <ul class="check-list">
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Quick onboarding process</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Scalable workforce solutions</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Cost-effective for short-term projects</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Access to specialized skills</li>
+          </ul>
+        </div>
+        <div class="engagement-card">
+          <div class="engagement-icon"><i class="fas fa-user-check"></i></div>
+          <div class="engagement-title">Full-Time Placement</div>
+          <div class="engagement-desc">Permanent hires thoroughly vetted to become a lasting part of your core team.</div>
+          <ul class="check-list">
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Thorough vetting process</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Cultural fit assessment</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Long-term talent acquisition</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Reduced turnover risk</li>
+          </ul>
+        </div>
+        <div class="engagement-card">
+          <div class="engagement-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="engagement-title">Project-Based</div>
+          <div class="engagement-desc">Expert teams assembled for specific deliverables with defined outcomes and full accountability.</div>
+          <ul class="check-list">
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Defined scope and timeline</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Accountable delivery</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Expert project management</li>
+            <li><span class="check-icon"><i class="fas fa-check"></i></span>Clear client milestones</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIRING PROCESS -->
+  <section class="services-section">
+    <div class="section-wrap">
+      <div class="fade-up">
+        <div class="section-badge">Our Process</div>
+        <h2>Our Hiring Approach</h2>
+        <p class="section-sub">A streamlined, transparent process built for speed, quality, and long-term placement success.</p>
+      </div>
+      <div class="process-steps fade-up">
+        <div class="process-step" style="position:relative;">
+          <div class="process-num">1</div>
+          <div class="process-title">Requirement Discovery</div>
+          <div class="process-desc">We deeply understand your business needs, culture, team dynamics, and technical requirements before sourcing a single candidate.</div>
+          <div class="process-arrow" style="display:none;"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <div class="process-title">Rigorous Screening</div>
+          <div class="process-desc">Multi-stage technical, behavioral, and cultural vetting ensures only the best candidates reach your desk.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <div class="process-title">Seamless Deployment</div>
+          <div class="process-desc">Smooth onboarding, continuous support, and regular check-ins ensure long-term placement success.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-wrap">
+      <div class="cta-grid fade-up">
+        <div class="cta-card cta-dark">
+          <div class="cta-grid-bg"></div>
+          <div class="cta-content">
+            <div class="cta-icon"><i class="fas fa-handshake"></i></div>
+            <div class="cta-title">Ready to Build Your Team?</div>
+            <div class="cta-sub">Tell us your hiring needs and we'll begin sourcing qualified candidates within 24 hours.</div>
+            <a href="contact.html" class="btn-cta-dark">Contact Us <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cta-card cta-blue">
+          <div class="cta-grid-bg"></div>
+          <div class="cta-content">
+            <div class="cta-icon"><i class="fas fa-cogs"></i></div>
+            <div class="cta-title">Explore Our Services</div>
+            <div class="cta-sub">From cloud architecture to staffing solutions, we have a full suite built for your business needs.</div>
+            <a href="services.html" class="btn-cta-light">View Services <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a class="logo" href="index.html"><div class="logo-badge">RR</div> RR Cloud</a>
+          <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner for technology consulting and staffing excellence.</p>
+          <div class="contact-line"><i class="far fa-envelope"></i> info@rrcloud.com</div>
+          <div class="contact-line"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</div>
+          <div class="contact-line"><i class="fas fa-map-marker-alt"></i> United States</div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="services.html">IT Consulting</a></li>
+            <li><a href="services.html">Staffing Solutions</a></li>
+            <li><a href="careers.html">Career Services</a></li>
+            <li><a href="clients.html">Client Solutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Legal</div>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">EEO Statement</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 RR Cloud LLC. All rights reserved.</span>
+        <span>An Equal Opportunity Employer</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
