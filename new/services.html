@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — RR Cloud</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --ink: #080c14;
+    --ink2: #0f1623;
+    --ink3: #161f30;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --gold: #f59e0b;
+    --white: #f8faff;
+    --muted: rgba(248,250,255,0.45);
+    --border: rgba(248,250,255,0.08);
+    --border2: rgba(59,130,246,0.3);
+    --r2: 20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--white); line-height: 1.7; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px; pointer-events: none; z-index: 0;
+  }
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.1); top: -200px; right: -100px; }
+  .orb-2 { width: 350px; height: 350px; background: rgba(245,158,11,0.05); bottom: 20%; left: -80px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(8,12,20,0.85); backdrop-filter: blur(20px); transition: background 0.3s; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--white); letter-spacing: -0.02em; }
+  .logo-badge { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: #fff; position: relative; overflow: hidden; }
+  .logo-badge::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%); }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 400; padding: 0.5rem 0.9rem; border-radius: 8px; transition: all 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); background: var(--border); }
+  .btn-nav { background: var(--accent) !important; color: #fff !important; border-radius: 8px !important; font-weight: 500 !important; padding: 0.5rem 1.2rem !important; }
+  .btn-nav:hover { background: var(--accent2) !important; box-shadow: 0 8px 25px rgba(59,130,246,0.35) !important; }
+
+  /* PAGE HEADER */
+  .page-header {
+    min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 120px 2rem 80px; position: relative; z-index: 1; border-bottom: 1px solid var(--border);
+    background: radial-gradient(ellipse at 40% 60%, rgba(59,130,246,0.08) 0%, transparent 60%);
+  }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); border: 1px solid var(--border2); background: rgba(59,130,246,0.08); padding: 6px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+  .eyebrow-dot { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+  .page-header h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
+  .page-header p { font-size: 1.05rem; color: var(--muted); font-weight: 300; max-width: 500px; }
+
+  /* SECTION SHARED */
+  section { position: relative; z-index: 1; }
+  .section-wrap { max-width: 1200px; margin: 0 auto; padding: 90px 2rem; }
+  .section-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  .section-badge::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent2); }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; font-weight: 300; line-height: 1.75; }
+
+  /* SERVICE CARDS */
+  .consulting-section { background: var(--ink2); border-bottom: 1px solid var(--border); }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; margin-top: 3.5rem; }
+  .svc-card {
+    background: var(--ink2); padding: 2rem 1.75rem;
+    position: relative; overflow: hidden; transition: background 0.3s; cursor: default;
+  }
+  .svc-card:hover { background: var(--ink3); }
+  .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
+  .svc-card:hover::before { opacity: 1; }
+  .svc-icon {
+    width: 46px; height: 46px; border-radius: 10px; border: 1px solid var(--border2);
+    background: rgba(59,130,246,0.08); display: flex; align-items: center; justify-content: center;
+    color: var(--accent2); font-size: 1.1rem; margin-bottom: 1.25rem; transition: all 0.3s;
+  }
+  .svc-card:hover .svc-icon { background: rgba(59,130,246,0.15); }
+  .svc-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .svc-desc { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin-bottom: 1.25rem; }
+  .svc-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 1rem; }
+  .svc-meta-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 4px; }
+  .svc-meta-text { font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.6; margin-bottom: 0.85rem; }
+
+  /* STAFFING SECTION */
+  .staffing-section { background: var(--ink); border-bottom: 1px solid var(--border); }
+  .staffing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+  .staff-card {
+    border: 1px solid var(--border); border-radius: var(--r2); padding: 2.25rem;
+    background: var(--ink2); position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .staff-card::after {
+    content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem;
+    height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .staff-card:hover { border-color: rgba(245,158,11,0.2); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .staff-card:hover::after { opacity: 1; }
+  .staff-icon {
+    width: 48px; height: 48px; border-radius: 11px; border: 1px solid rgba(245,158,11,0.25);
+    background: rgba(245,158,11,0.08); display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1.1rem; margin-bottom: 1.25rem; transition: all 0.3s;
+  }
+  .staff-card:hover .staff-icon { background: rgba(245,158,11,0.15); }
+  .staff-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .staff-desc { font-size: 0.875rem; color: var(--muted); font-weight: 300; line-height: 1.8; margin-bottom: 1.25rem; }
+  .staff-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 1.1rem; }
+  .staff-meta-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .staff-meta-text { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.65; margin-bottom: 0.85rem; }
+
+  /* CTA BANNER */
+  .cta-section { background: var(--ink2); border-top: 1px solid var(--border); }
+  .cta-banner {
+    border: 1px solid var(--border2); border-radius: var(--r2); padding: 3.5rem;
+    background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, rgba(26,37,64,0.8) 100%);
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(248,250,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .cta-banner-text { position: relative; z-index: 1; }
+  .cta-banner h3 { font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .cta-banner p { font-size: 0.95rem; color: var(--muted); font-weight: 300; max-width: 420px; }
+  .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .btn-primary-c { background: var(--accent); color: #fff; border: none; padding: 0.85rem 2rem; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.25s; }
+  .btn-primary-c:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(59,130,246,0.4); }
+  .btn-ghost-c { background: transparent; color: var(--white); border: 1px solid var(--border); padding: 0.85rem 2rem; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 400; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.25s; }
+  .btn-ghost-c:hover { border-color: rgba(248,250,255,0.3); background: var(--border); }
+
+  /* FOOTER */
+  footer { background: var(--ink); border-top: 1px solid var(--border); padding: 5rem 2rem 2.5rem; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+  .footer-brand-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin: 1rem 0 1.5rem; max-width: 280px; }
+  .contact-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .contact-line i { color: var(--accent2); font-size: 0.75rem; }
+  .footer-heading { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; font-weight: 300; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .footer-links a::before { content: ''; width: 0; height: 1px; background: var(--accent2); transition: width 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-links a:hover::before { width: 12px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; font-size: 0.8rem; color: rgba(248,250,255,0.25); }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .staffing-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .cta-banner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-badge">RR</div>
+    RR Cloud
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="careers.html" class="btn-nav">Join Our Team</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="eyebrow"><span class="eyebrow-dot"></span> What We Offer</div>
+  <h1>Our Services</h1>
+  <p>Comprehensive IT consulting and staffing solutions to drive your business forward and accelerate careers.</p>
+</section>
+
+<!-- CONSULTING SERVICES -->
+<section class="consulting-section">
+  <div class="section-wrap">
+    <div class="fade-up">
+      <div class="section-badge">Practice Area 01</div>
+      <h2>Consulting Services</h2>
+      <p class="section-sub">Strategic technology solutions that transform your business operations and drive digital innovation at scale.</p>
+    </div>
+    <div class="cards-grid fade-up">
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-cloud"></i></div>
+        <div class="svc-title">Cloud Architecture & Migration</div>
+        <p class="svc-desc">Design and implement scalable cloud solutions tailored precisely to your business needs and growth trajectory.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Organizations looking to modernize their infrastructure.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Reduced operational costs and improved scalability.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-database"></i></div>
+        <div class="svc-title">Data & Analytics</div>
+        <p class="svc-desc">Transform raw data into actionable insights with advanced analytics pipelines and business intelligence solutions.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Data-driven organizations seeking competitive advantage.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Better decision-making through data intelligence.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-brain"></i></div>
+        <div class="svc-title">AI & Machine Learning</div>
+        <p class="svc-desc">Leverage artificial intelligence to automate processes, enhance capabilities, and unlock new competitive possibilities.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Companies ready to embrace AI transformation.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Increased efficiency and innovation potential.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="svc-title">Cybersecurity Solutions</div>
+        <p class="svc-desc">Protect your digital assets with comprehensive security strategies, risk assessments, and implementation roadmaps.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Organizations prioritizing data protection and compliance.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Enhanced security posture and risk mitigation.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-network-wired"></i></div>
+        <div class="svc-title">Enterprise Integration</div>
+        <p class="svc-desc">Connect disparate systems and streamline workflows across your organization for unified, efficient operations.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Enterprises with complex technology ecosystems.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Unified operations and improved productivity.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fas fa-code"></i></div>
+        <div class="svc-title">Custom Development</div>
+        <p class="svc-desc">Build bespoke software solutions designed specifically for your unique requirements and business logic.</p>
+        <hr class="svc-divider">
+        <div class="svc-meta-label">Who it's for</div>
+        <p class="svc-meta-text">Businesses with specialized software needs.</p>
+        <div class="svc-meta-label">Value</div>
+        <p class="svc-meta-text" style="margin-bottom:0">Tailored solutions that drive competitive advantage.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STAFFING SERVICES -->
+<section class="staffing-section">
+  <div class="section-wrap">
+    <div class="fade-up">
+      <div class="section-badge">Practice Area 02</div>
+      <h2>Staffing & Career Services</h2>
+      <p class="section-sub">Connecting exceptional talent with outstanding opportunities — for both sides of the equation.</p>
+    </div>
+    <div class="staffing-grid fade-up">
+
+      <div class="staff-card">
+        <div class="staff-icon"><i class="fas fa-user-clock"></i></div>
+        <div class="staff-title">Contract Staffing (C2C/W2)</div>
+        <p class="staff-desc">Flexible workforce solutions for project-based and temporary staffing needs — skilled talent, on-demand, without the long-term overhead.</p>
+        <hr class="staff-divider">
+        <div class="staff-meta-label">Who it's for</div>
+        <p class="staff-meta-text">Companies needing scalable talent solutions.</p>
+        <div class="staff-meta-label">Value</div>
+        <p class="staff-meta-text" style="margin-bottom:0">Quick access to skilled professionals without long-term commitment.</p>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-icon"><i class="fas fa-briefcase"></i></div>
+        <div class="staff-title">Full-Time Placements</div>
+        <p class="staff-desc">Find exceptional permanent talent to join your team and drive long-term success. We don't just fill roles — we build teams.</p>
+        <hr class="staff-divider">
+        <div class="staff-meta-label">Who it's for</div>
+        <p class="staff-meta-text">Companies building core, long-lasting teams.</p>
+        <div class="staff-meta-label">Value</div>
+        <p class="staff-meta-text" style="margin-bottom:0">Quality hires that align with your culture and goals.</p>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="staff-title">Career Development</div>
+        <p class="staff-desc">Comprehensive programs to help IT professionals advance their careers through mentorship, training, and targeted opportunities.</p>
+        <hr class="staff-divider">
+        <div class="staff-meta-label">Who it's for</div>
+        <p class="staff-meta-text">IT professionals seeking meaningful growth opportunities.</p>
+        <div class="staff-meta-label">Value</div>
+        <p class="staff-meta-text" style="margin-bottom:0">Accelerated career progression and skill development.</p>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="staff-title">Project-Based Consulting</div>
+        <p class="staff-desc">Dedicated expert teams assembled for specific projects with defined outcomes, clear deliverables, and full accountability.</p>
+        <hr class="staff-divider">
+        <div class="staff-meta-label">Who it's for</div>
+        <p class="staff-meta-text">Organizations with discrete, high-stakes project requirements.</p>
+        <div class="staff-meta-label">Value</div>
+        <p class="staff-meta-text" style="margin-bottom:0">Focused expertise and accountability for project success.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="section-wrap" style="padding-top:60px; padding-bottom:60px;">
+    <div class="cta-banner fade-up">
+      <div class="cta-banner-text">
+        <h3>Ready to get started?</h3>
+        <p>Whether you need talent, strategy, or technology — we have a solution built for you.</p>
+      </div>
+      <div class="cta-banner-btns">
+        <a href="contact.html" class="btn-primary-c">Talk to Us <i class="fas fa-arrow-right"></i></a>
+        <a href="careers.html" class="btn-ghost-c">View Careers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:0">
+          <div class="logo-badge">RR</div>
+          RR Cloud
+        </a>
+        <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner for technology consulting and staffing excellence.</p>
+        <div class="contact-line"><i class="far fa-envelope"></i> info@rrcloud.com</div>
+        <div class="contact-line"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</div>
+        <div class="contact-line"><i class="fas fa-map-marker-alt"></i> United States</div>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">IT Consulting</a></li>
+          <li><a href="#">Staffing Solutions</a></li>
+          <li><a href="#">Career Services</a></li>
+          <li><a href="#">Client Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">EEO Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 RR Cloud LLC. All rights reserved.</span>
+      <span>An Equal Opportunity Employer</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background = window.scrollY > 40 ? 'rgba(8,12,20,0.97)' : 'rgba(8,12,20,0.85)';
+  });
+</script>
+</body>
+</html>

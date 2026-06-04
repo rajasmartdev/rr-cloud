@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — RR Cloud</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --ink: #080c14;
+    --ink2: #0f1623;
+    --ink3: #161f30;
+    --surface: #1a2540;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --gold: #f59e0b;
+    --white: #f8faff;
+    --muted: rgba(248,250,255,0.45);
+    --border: rgba(248,250,255,0.08);
+    --border2: rgba(59,130,246,0.3);
+    --r: 12px;
+    --r2: 20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--white);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.1); top: -200px; right: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(245,158,11,0.05); bottom: 30%; left: -100px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(20px);
+    transition: background 0.3s;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.2rem; color: var(--white); letter-spacing: -0.02em;
+  }
+  .logo-badge {
+    width: 36px; height: 36px; background: var(--accent); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800; color: #fff; position: relative; overflow: hidden;
+  }
+  .logo-badge::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%); }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 0.875rem;
+    font-weight: 400; padding: 0.5rem 0.9rem; border-radius: 8px; transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); background: var(--border); }
+  .btn-nav {
+    background: var(--accent) !important; color: #fff !important;
+    border-radius: 8px !important; font-weight: 500 !important; padding: 0.5rem 1.2rem !important;
+  }
+  .btn-nav:hover { background: var(--accent2) !important; box-shadow: 0 8px 25px rgba(59,130,246,0.35) !important; }
+
+  /* PAGE HEADER */
+  .page-header {
+    min-height: 380px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    position: relative; z-index: 1;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(ellipse at 60% 40%, rgba(59,130,246,0.08) 0%, transparent 60%);
+  }
+  .page-header .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); border: 1px solid var(--border2);
+    background: rgba(59,130,246,0.08); padding: 6px 14px; border-radius: 100px; margin-bottom: 1.25rem;
+  }
+  .eyebrow-dot { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+  .page-header h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem;
+  }
+  .page-header p { font-size: 1.05rem; color: var(--muted); font-weight: 300; max-width: 480px; }
+
+  /* SECTION SHARED */
+  section { position: relative; z-index: 1; }
+  .section-wrap { max-width: 1200px; margin: 0 auto; padding: 90px 2rem; }
+  .section-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 1rem;
+  }
+  .section-badge::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent2); }
+  h2 {
+    font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; font-weight: 300; line-height: 1.75; }
+
+  /* WHO WE ARE */
+  .who-section { background: var(--ink2); border-bottom: 1px solid var(--border); }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .who-text p { font-size: 0.95rem; color: var(--muted); font-weight: 300; line-height: 1.85; margin-bottom: 1.25rem; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; }
+  .stat-box {
+    background: var(--ink3); padding: 2.25rem 2rem; text-align: center;
+    transition: background 0.3s; position: relative; overflow: hidden;
+  }
+  .stat-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(59,130,246,0.05) 0%, transparent 70%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .stat-box:hover { background: var(--surface); }
+  .stat-box:hover::before { opacity: 1; }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent2), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-lbl { font-size: 0.8rem; color: var(--muted); font-weight: 300; letter-spacing: 0.05em; }
+
+  /* MISSION VISION */
+  .mv-section { background: var(--ink); border-bottom: 1px solid var(--border); }
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .mv-card {
+    border: 1px solid var(--border); border-radius: var(--r2);
+    padding: 2.5rem; background: var(--ink2);
+    position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .mv-card::before {
+    content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem;
+    height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .mv-card:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .mv-card:hover::before { opacity: 1; }
+  .mv-icon {
+    width: 52px; height: 52px; border-radius: 12px; border: 1px solid var(--border2);
+    background: rgba(59,130,246,0.08); display: flex; align-items: center; justify-content: center;
+    color: var(--accent2); font-size: 1.25rem; margin-bottom: 1.5rem; transition: all 0.3s;
+  }
+  .mv-card:hover .mv-icon { background: rgba(59,130,246,0.15); box-shadow: 0 0 0 4px rgba(59,130,246,0.08); }
+  .mv-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .mv-text { font-size: 0.9rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
+
+  /* CORE VALUES */
+  .values-section { background: var(--ink2); border-bottom: 1px solid var(--border); }
+  .values-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; margin-top: 3.5rem; }
+  .value-item {
+    background: var(--ink2); padding: 2rem 1.5rem;
+    position: relative; overflow: hidden; transition: background 0.3s;
+  }
+  .value-item:hover { background: var(--ink3); }
+  .value-item::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .value-item:hover::after { opacity: 1; }
+  .value-icon {
+    width: 42px; height: 42px; border-radius: 10px; border: 1px solid rgba(245,158,11,0.25);
+    background: rgba(245,158,11,0.08); display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1rem; margin-bottom: 1rem;
+  }
+  .value-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .value-text { font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
+
+  /* LEADERSHIP */
+  .leadership-section { background: var(--ink); border-bottom: 1px solid var(--border); }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .team-card {
+    border: 1px solid var(--border); border-radius: var(--r2);
+    background: var(--ink2); overflow: hidden; transition: all 0.3s;
+  }
+  .team-card:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .team-avatar {
+    height: 220px; background: var(--ink3);
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
+  }
+  .team-avatar::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center bottom, rgba(59,130,246,0.06) 0%, transparent 70%);
+  }
+  .avatar-initials {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(59,130,246,0.12); border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--accent2);
+    position: relative; z-index: 1;
+  }
+  .team-info { padding: 1.75rem; }
+  .team-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+  .team-role { font-size: 0.78rem; color: var(--accent2); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+  .team-bio { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.75; }
+
+  /* EOE */
+  .eoe-section { background: var(--ink2); }
+  .eoe-card {
+    border: 1px solid var(--border2); border-radius: var(--r2);
+    padding: 2.5rem; background: rgba(59,130,246,0.04);
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .eoe-icon {
+    width: 52px; height: 52px; border-radius: 12px; border: 1px solid var(--border2);
+    background: rgba(59,130,246,0.1); display: flex; align-items: center; justify-content: center;
+    color: var(--accent2); font-size: 1.25rem; flex-shrink: 0;
+  }
+  .eoe-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .eoe-text { font-size: 0.875rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
+
+  /* FOOTER */
+  footer { background: var(--ink); border-top: 1px solid var(--border); padding: 5rem 2rem 2.5rem; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+  .footer-brand-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin: 1rem 0 1.5rem; max-width: 280px; }
+  .contact-line { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .contact-line i { color: var(--accent2); font-size: 0.75rem; }
+  .footer-heading { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; font-weight: 300; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .footer-links a::before { content: ''; width: 0; height: 1px; background: var(--accent2); transition: width 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-links a:hover::before { width: 12px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; font-size: 0.8rem; color: rgba(248,250,255,0.25); }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .who-grid, .mv-grid, .team-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-badge">RR</div>
+    RR Cloud
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="careers.html" class="btn-nav">Join Our Team</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="eyebrow"><span class="eyebrow-dot"></span> Our Story</div>
+  <h1>About RR Cloud</h1>
+  <p>Your trusted partner in IT excellence and career development.</p>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="who-section">
+  <div class="section-wrap">
+    <div class="fade-up">
+      <div class="section-badge">Who We Are</div>
+      <h2>Built on excellence,<br>driven by results</h2>
+    </div>
+    <div class="who-grid fade-up">
+      <div class="who-text">
+        <p>RR Cloud is a leading IT consulting and staffing company dedicated to connecting top talent with innovative organizations. Since our inception, we have been committed to delivering excellence through strategic IT solutions and building rewarding career paths for professionals across industries.</p>
+        <p>Founded on the principles of excellence, integrity, and innovation, we have grown to become a trusted partner for businesses seeking digital transformation and professionals looking to advance their careers in the ever-evolving technology landscape.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num">500+</div>
+          <div class="stat-lbl">Placements</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100+</div>
+          <div class="stat-lbl">Enterprise Clients</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">50+</div>
+          <div class="stat-lbl">Industries Served</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">98%</div>
+          <div class="stat-lbl">Client Retention</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="mv-section">
+  <div class="section-wrap">
+    <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto;">
+      <div class="section-badge" style="justify-content:center">Purpose</div>
+      <h2>Mission & Vision</h2>
+      <p class="section-sub" style="margin:0 auto;">The principles that define where we are and where we're going.</p>
+    </div>
+    <div class="mv-grid fade-up">
+      <div class="mv-card">
+        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+        <div class="mv-title">Our Mission</div>
+        <p class="mv-text">To empower organizations with exceptional IT talent and specialized consulting while creating meaningful career opportunities that foster professional growth and success. We are committed to delivering value through expertise, integrity, and a dedication to excellence in every engagement.</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+        <div class="mv-title">Our Vision</div>
+        <p class="mv-text">To be the premier partner of choice for technology consulting and talent solutions, recognized for our unwavering commitment to quality, innovation, and ethical business standards. We envision a future where technology and human potential seamlessly blend for businesses and careers alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="values-section">
+  <div class="section-wrap">
+    <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto;">
+      <div class="section-badge" style="justify-content:center">What We Stand For</div>
+      <h2>Our Core Values</h2>
+      <p class="section-sub" style="margin:0 auto;">The principles that guide every decision we make.</p>
+    </div>
+    <div class="values-grid fade-up">
+      <div class="value-item">
+        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="value-title">Integrity</div>
+        <p class="value-text">We uphold the highest ethical standards, building trust through transparency and honesty in all our dealings.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><i class="fas fa-certificate"></i></div>
+        <div class="value-title">Excellence</div>
+        <p class="value-text">We strive for excellence in service delivery and in building the exceptional teams that power great work.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><i class="fas fa-users"></i></div>
+        <div class="value-title">Collaboration</div>
+        <p class="value-text">We believe in the power of partnership and teamwork to achieve far greater success together.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><i class="fas fa-heart"></i></div>
+        <div class="value-title">Care</div>
+        <p class="value-text">We genuinely care about our clients, our people, and our communities — fostering positive impact at every turn.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="value-title">Innovation</div>
+        <p class="value-text">We embrace new ideas and approaches to stay ahead of the curve and deliver better, smarter solutions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership-section">
+  <div class="section-wrap">
+    <div class="fade-up" style="text-align:center; max-width:560px; margin:0 auto;">
+      <div class="section-badge" style="justify-content:center">Leadership</div>
+      <h2>Meet the Team</h2>
+      <p class="section-sub" style="margin:0 auto;">Experienced professionals guiding RR Cloud's vision forward.</p>
+    </div>
+    <div class="team-grid fade-up">
+      <div class="team-card">
+        <div class="team-avatar">
+          <div class="avatar-initials">JS</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">John Smith</div>
+          <div class="team-role">Chief Executive Officer</div>
+          <p class="team-bio">With over 20 years of experience in IT consulting and digital transformation, John leads RR Cloud's strategic vision and growth initiatives.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">
+          <div class="avatar-initials">SJ</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Sarah Johnson</div>
+          <div class="team-role">Chief Operations Officer</div>
+          <p class="team-bio">Sarah brings deep expertise in tech operations and talent management, ensuring seamless delivery across all consulting and staffing services.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">
+          <div class="avatar-initials">MC</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Michael Chen</div>
+          <div class="team-role">Chief Technology Officer</div>
+          <p class="team-bio">An expert in emerging technologies and enterprise architecture, Michael drives our technical excellence to new heights for every client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EOE -->
+<section class="eoe-section">
+  <div class="section-wrap" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="eoe-card fade-up">
+      <div class="eoe-icon"><i class="fas fa-shield-alt"></i></div>
+      <div>
+        <div class="eoe-title">Equal Opportunity Employer</div>
+        <p class="eoe-text">We are committed to creating a diverse environment and are proud to be an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, disability, age, or veteran status.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:0">
+          <div class="logo-badge">RR</div>
+          RR Cloud
+        </a>
+        <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner for technology consulting and staffing excellence.</p>
+        <div class="contact-line"><i class="far fa-envelope"></i> info@rrcloud.com</div>
+        <div class="contact-line"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</div>
+        <div class="contact-line"><i class="fas fa-map-marker-alt"></i> United States</div>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">IT Consulting</a></li>
+          <li><a href="#">Staffing Solutions</a></li>
+          <li><a href="#">Career Services</a></li>
+          <li><a href="#">Client Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">EEO Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 RR Cloud LLC. All rights reserved.</span>
+      <span>An Equal Opportunity Employer</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background = window.scrollY > 40 ? 'rgba(8,12,20,0.97)' : 'rgba(8,12,20,0.85)';
+  });
+</script>
+</body>
+</html>
