@@ -52,7 +52,7 @@
     padding: 0 2rem; height: 72px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--border);
-    background: rgba(8,12,20,0.85);
+    background: #F9FAFF;
     backdrop-filter: blur(20px);
     transition: background 0.3s;
   }
@@ -69,10 +69,10 @@
   .logo-badge::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%); }
   .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
   .nav-links a {
-    text-decoration: none; color: var(--muted); font-size: 0.875rem;
+    text-decoration: none; color: #070D14; font-size: 0.875rem;
     font-weight: 400; padding: 0.5rem 0.9rem; border-radius: 8px; transition: all 0.2s;
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--white); background: var(--border); }
+  .nav-links a:hover, .nav-links a.active { color: #60A6FA; background: var(--border); }
   .btn-nav {
     background: var(--accent) !important; color: #fff !important;
     border-radius: 8px !important; font-weight: 500 !important; padding: 0.5rem 1.2rem !important;
@@ -233,7 +233,7 @@
   .eoe-text { font-size: 0.875rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
 
   /* FOOTER */
-  footer { background: var(--ink); border-top: 1px solid var(--border); padding: 5rem 2rem 2.5rem; position: relative; z-index: 1; }
+  footer { background: var(--white); border-top: 1px solid var(--border); padding: 5rem 2rem 2.5rem; position: relative; z-index: 1; }
   .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
   .footer-brand-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin: 1rem 0 1.5rem; max-width: 280px; }
