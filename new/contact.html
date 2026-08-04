@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us — RR Cloud</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
@@ -16,16 +19,24 @@
       --accent2: #60a5fa;
       --gold: #f59e0b;
       --white: #f8faff;
-      --muted: rgba(248,250,255,0.45);
-      --border: rgba(248,250,255,0.08);
-      --border2: rgba(59,130,246,0.3);
+      --muted: rgba(248, 250, 255, 0.45);
+      --border: rgba(248, 250, 255, 0.08);
+      --border2: rgba(59, 130, 246, 0.3);
       --r: 12px;
       --r2: 20px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -41,8 +52,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
@@ -56,13 +67,29 @@
       pointer-events: none;
       z-index: 0;
     }
-    .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.12); top: -200px; right: -100px; }
-    .orb-2 { width: 400px; height: 400px; background: rgba(245,158,11,0.06); bottom: 20%; left: -100px; }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: rgba(59, 130, 246, 0.12);
+      top: -200px;
+      right: -100px;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(245, 158, 11, 0.06);
+      bottom: 20%;
+      left: -100px;
+    }
 
     /* ─── NAV ─── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       padding: 0 2rem;
       height: 72px;
@@ -70,7 +97,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
-      background: rgba(8,12,20,0.85);
+      background: #F9FAFF;
       backdrop-filter: blur(20px);
       transition: all 0.3s ease;
     }
@@ -88,10 +115,13 @@
     }
 
     .logo-badge {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       background: var(--accent);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.85rem;
       font-weight: 800;
       color: #fff;
@@ -103,7 +133,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
     }
 
     .nav-links {
@@ -115,7 +145,7 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--muted);
+      color: #070D14;
       font-size: 0.875rem;
       font-weight: 400;
       padding: 0.5rem 0.9rem;
@@ -124,8 +154,9 @@
       letter-spacing: 0.01em;
     }
 
-    .nav-links a:hover {
-      color: var(--white);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #60A6FA;
       background: var(--border);
     }
 
@@ -141,11 +172,14 @@
     .btn-nav:hover {
       background: var(--accent2) !important;
       transform: translateY(-1px);
-      box-shadow: 0 8px 25px rgba(59,130,246,0.35) !important;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35) !important;
     }
 
     /* ─── SECTION SHARED ─── */
-    section { position: relative; z-index: 1; }
+    section {
+      position: relative;
+      z-index: 1;
+    }
 
     .section-wrap {
       max-width: 1200px;
@@ -168,7 +202,8 @@
     .section-badge::before {
       content: '';
       display: block;
-      width: 24px; height: 1px;
+      width: 24px;
+      height: 1px;
       background: var(--accent2);
     }
 
@@ -196,7 +231,10 @@
       transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ─── PAGE HERO ─── */
     .page-hero {
@@ -221,22 +259,32 @@
       text-transform: uppercase;
       color: var(--accent2);
       border: 1px solid var(--border2);
-      background: rgba(59,130,246,0.08);
+      background: rgba(59, 130, 246, 0.08);
       padding: 6px 14px;
       border-radius: 100px;
       margin-bottom: 1.75rem;
     }
 
     .eyebrow-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       background: var(--accent2);
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
     }
 
     h1 {
@@ -266,7 +314,11 @@
     }
 
     /* ─── MAIN CONTENT ─── */
-    .content-section { background: var(--ink2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .content-section {
+      background: var(--ink2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
 
     .content-wrap {
       max-width: 1200px;
@@ -302,19 +354,23 @@
       margin-bottom: 1rem;
     }
 
-    .form-group.full { grid-template-columns: 1fr; }
+    .form-group.full {
+      grid-template-columns: 1fr;
+    }
 
     label {
       font-size: 0.75rem;
       font-weight: 500;
-      color: rgba(248,250,255,0.55);
+      color: rgba(248, 250, 255, 0.55);
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
       display: block;
     }
 
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       background: var(--ink2);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -328,18 +384,32 @@
       width: 100%;
     }
 
-    input::placeholder, textarea::placeholder { color: rgba(248,250,255,0.2); }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(248, 250, 255, 0.2);
     }
 
-    select option { background: var(--ink3); }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
 
-    textarea { resize: vertical; min-height: 120px; }
+    select option {
+      background: var(--ink3);
+    }
 
-    .form-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
 
     .btn-submit {
       background: var(--accent);
@@ -357,12 +427,16 @@
       transition: all 0.25s;
     }
 
-    .btn-submit:hover { background: var(--accent2); box-shadow: 0 8px 25px rgba(59,130,246,0.35); transform: translateY(-1px); }
+    .btn-submit:hover {
+      background: var(--accent2);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+      transform: translateY(-1px);
+    }
 
     .success-msg {
       display: none;
-      background: rgba(16,185,129,0.15);
-      border: 1px solid rgba(16,185,129,0.3);
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
       border-radius: 8px;
       padding: 1rem 1.25rem;
       color: #10b981;
@@ -372,7 +446,9 @@
     }
 
     /* INFO CARDS */
-    .info-section { background: var(--ink); }
+    .info-section {
+      background: var(--ink);
+    }
 
     .info-grid {
       display: grid;
@@ -403,11 +479,14 @@
       margin-bottom: 1.25rem;
     }
 
-    .info-item:last-child { margin-bottom: 0; }
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
 
     .info-icon {
-      width: 42px; height: 42px;
-      background: rgba(59,130,246,0.15);
+      width: 42px;
+      height: 42px;
+      background: rgba(59, 130, 246, 0.15);
       color: var(--accent2);
       border-radius: 10px;
       border: 1px solid var(--border2);
@@ -434,7 +513,9 @@
     }
 
     /* ─── FAQ SECTION ─── */
-    .faq-section { background: var(--ink); }
+    .faq-section {
+      background: var(--ink);
+    }
 
     .faq-wrap {
       max-width: 760px;
@@ -466,7 +547,9 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    .faq-btn:hover { background: var(--ink3); }
+    .faq-btn:hover {
+      background: var(--ink3);
+    }
 
     .faq-btn i {
       color: var(--accent2);
@@ -474,7 +557,9 @@
       font-size: 0.8rem;
     }
 
-    .faq-btn.open i { transform: rotate(180deg); }
+    .faq-btn.open i {
+      transform: rotate(180deg);
+    }
 
     .faq-body {
       display: none;
@@ -487,9 +572,11 @@
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--ink);
+      background: var(--white);
       border-top: 1px solid var(--border);
-      padding: 80px 2rem 40px;
+      padding: 3rem 2rem 2.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .footer-inner {
@@ -501,74 +588,132 @@
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      margin-bottom: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--ink2);
     }
 
     .footer-brand-text {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 0.85rem;
+      color: var(--ink);
       font-weight: 300;
-      line-height: 1.7;
-      margin: 0.75rem 0 1.5rem;
+      line-height: 1.75;
+      margin: 1rem 0 1.5rem;
+      max-width: 280px;
     }
 
     .contact-line {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 8px;
+      font-size: 0.8rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .contact-line i {
+      color: var(--accent2);
+      font-size: 0.75rem;
     }
 
     .footer-heading {
       font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--white);
-      letter-spacing: 0.1em;
+      color: var(--accent);
       margin-bottom: 1.25rem;
     }
 
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.75rem; }
-    .footer-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 300;
-      transition: all 0.2s;
+    .footer-links {
+      list-style: none;
     }
-    .footer-links a:hover { color: var(--white); }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--ink2);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a::before {
+      content: '';
+      width: 0;
+      height: 1px;
+      background: var(--accent2);
+      transition: width 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent2);
+    }
+
+    .footer-links a:hover::before {
+      width: 12px;
+    }
 
     .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 1rem;
       font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 300;
+      color: #000;
     }
 
     @media (max-width: 900px) {
-      .info-grid { grid-template-columns: 1fr; }
-      .form-group { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 600px) {
-      nav { padding: 0 1rem; }
-      .section-wrap { padding: 60px 1rem; }
-      .content-wrap { padding: 40px 1rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-      .contact-form-card { padding: 1.5rem; }
+      nav {
+        padding: 0 1rem;
+      }
+
+      .section-wrap {
+        padding: 60px 1rem;
+      }
+
+      .content-wrap {
+        padding: 40px 1rem;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .contact-form-card {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- GLOW ORBS -->
   <div class="orb orb-1"></div>
@@ -577,8 +722,7 @@
   <!-- NAV -->
   <nav>
     <a class="logo" href="index.html">
-      <div class="logo-badge">RR</div>
-      RR Cloud
+      <img src="../images/rr cloud logo.PNG" width="180">
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -586,7 +730,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="clients.html">Clients</a></li>
-      <li><a href="contact.html" style="color:var(--white);">Contact</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
       <li><a href="careers.html" class="btn-nav">Join Our Team</a></li>
     </ul>
   </nav>
@@ -599,7 +743,8 @@
         Get in Touch
       </div>
       <h1>Let's Start a<br><span class="highlight">Conversation</span></h1>
-      <p class="hero-lead">Whether you're hiring top talent or exploring career opportunities, our team is here to help you move forward.</p>
+      <p class="hero-lead">Whether you're hiring top talent or exploring career opportunities, our team is here to help
+        you move forward.</p>
     </div>
   </section>
 
@@ -650,7 +795,8 @@
               <div class="form-actions">
                 <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
               </div>
-              <div class="success-msg" id="successMsg"><i class="fas fa-check-circle"></i> Your message has been sent! We'll be in touch soon.</div>
+              <div class="success-msg" id="successMsg"><i class="fas fa-check-circle"></i> Your message has been sent!
+                We'll be in touch soon.</div>
             </form>
           </div>
         </div>
@@ -695,20 +841,28 @@
       </div>
       <div class="faq-wrap fade-up">
         <div class="faq-item">
-          <button class="faq-btn" onclick="toggleFaq(this)">How quickly do you respond to inquiries? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-body">We aim to respond to all inquiries within 1–2 business days. For urgent hiring needs, please indicate that in your message and we'll prioritize accordingly.</div>
+          <button class="faq-btn" onclick="toggleFaq(this)">How quickly do you respond to inquiries? <i
+              class="fas fa-chevron-down"></i></button>
+          <div class="faq-body">We aim to respond to all inquiries within 1–2 business days. For urgent hiring needs,
+            please indicate that in your message and we'll prioritize accordingly.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-btn" onclick="toggleFaq(this)">What types of IT roles do you specialize in? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-body">We specialize in software engineering, data and AI, cloud and DevOps, cybersecurity, and IT consulting roles — across contract, contract-to-hire, and full-time positions.</div>
+          <button class="faq-btn" onclick="toggleFaq(this)">What types of IT roles do you specialize in? <i
+              class="fas fa-chevron-down"></i></button>
+          <div class="faq-body">We specialize in software engineering, data and AI, cloud and DevOps, cybersecurity, and
+            IT consulting roles — across contract, contract-to-hire, and full-time positions.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-btn" onclick="toggleFaq(this)">Do you work with companies outside the US? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-body">Our primary focus is the US market, but we do place talent with global companies that have US-based operations. Contact us to discuss your specific needs.</div>
+          <button class="faq-btn" onclick="toggleFaq(this)">Do you work with companies outside the US? <i
+              class="fas fa-chevron-down"></i></button>
+          <div class="faq-body">Our primary focus is the US market, but we do place talent with global companies that
+            have US-based operations. Contact us to discuss your specific needs.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-btn" onclick="toggleFaq(this)">How do I apply for a job through RR Cloud? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-body">Visit our Careers page to see current openings and submit your application directly. Our team will review your profile and reach out if there's a strong match.</div>
+          <button class="faq-btn" onclick="toggleFaq(this)">How do I apply for a job through RR Cloud? <i
+              class="fas fa-chevron-down"></i></button>
+          <div class="faq-body">Visit our Careers page to see current openings and submit your application directly. Our
+            team will review your profile and reach out if there's a strong match.</div>
         </div>
       </div>
     </div>
@@ -719,11 +873,11 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div>
-          <a class="logo" href="index.html">
-            <div class="logo-badge">RR</div>
-            RR Cloud
+          <a href="index.html" class="logo" style="margin-bottom:0">
+            <img src="../images/rr cloud logo.PNG" width="160">
           </a>
-          <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner for technology consulting and staffing excellence.</p>
+          <p class="footer-brand-text">Building careers and delivering intelligent IT solutions. Your trusted partner
+            for technology consulting and staffing excellence.</p>
           <div class="contact-line"><i class="far fa-envelope"></i> info@rrcloud.com</div>
           <div class="contact-line"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</div>
           <div class="contact-line"><i class="fas fa-map-marker-alt"></i> United States</div>
@@ -734,7 +888,6 @@
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="careers.html">Careers</a></li>
-            <li><a href="clients.html">Clients</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -757,7 +910,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 RR Cloud LLC. All rights reserved.</span>
+        <span>&copy; 2026 RR Cloud LLC. All rights reserved.</span>
         <span>An Equal Opportunity Employer</span>
       </div>
     </div>
@@ -771,7 +924,7 @@
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
     // ── FORM SUBMISSION ──
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const btn = this.querySelector('.btn-submit');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
@@ -798,4 +951,5 @@
     }
   </script>
 </body>
+
 </html>
